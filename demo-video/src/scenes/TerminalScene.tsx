@@ -61,6 +61,11 @@ export const TerminalScene: React.FC = () => {
   });
   const rightGlow = rightOpacity * rightFlash * rightGlowFade;
 
+  const pipelineOpacity = interpolate(frame, [120, 148], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
   return (
     <AbsoluteFill
       style={{
@@ -73,7 +78,7 @@ export const TerminalScene: React.FC = () => {
         padding: '40px 64px',
       }}
     >
-      <SectionLabel label="CI/CD Integration — Real terminal output" />
+      <SectionLabel label="Wired into your CI/CD" />
 
       {/* Split layout */}
       <div style={{ display: 'flex', gap: 20, width: '100%', alignItems: 'flex-start' }}>
@@ -146,6 +151,22 @@ export const TerminalScene: React.FC = () => {
             glowOpacity={rightGlow}
           />
         </div>
+      </div>
+
+      {/* Pipeline diagram */}
+      <div
+        style={{
+          marginTop: 22,
+          fontSize: 13,
+          color: COLORS.textMuted,
+          fontFamily: COLORS.monoFont,
+          letterSpacing: '0.02em',
+          opacity: pipelineOpacity,
+        }}
+      >
+        Build → Deploy (Staging) →{' '}
+        <span style={{ color: COLORS.green, fontWeight: 600 }}>Certify</span>{' '}
+        → Promote
       </div>
     </AbsoluteFill>
   );

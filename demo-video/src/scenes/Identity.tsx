@@ -32,6 +32,11 @@ export const Identity: React.FC = () => {
       config: { damping: 20, stiffness: 200 },
     });
 
+  const mottoOpacity = interpolate(frame, [108, 130], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
   return (
     <AbsoluteFill
       style={{
@@ -159,6 +164,20 @@ export const Identity: React.FC = () => {
             {label}
           </div>
         ))}
+      </div>
+
+      {/* Motto */}
+      <div
+        style={{
+          marginTop: 24,
+          fontSize: 14,
+          color: COLORS.textMuted,
+          fontStyle: 'italic',
+          letterSpacing: '0.01em',
+          opacity: mottoOpacity,
+        }}
+      >
+        Trust, but verify.
       </div>
     </AbsoluteFill>
   );

@@ -3,7 +3,7 @@ import { inter } from '../fonts';
 import { COLORS } from '../constants';
 
 const HEADLINE = 'Does your AI actually work in production?';
-const SUBTEXT = 'Real production failures. No warnings. No test coverage.';
+const SUBTEXT = 'Hallucinations. Drift. Prompt injection. Zero audit trail.';
 const CHAR_FRAMES = 2;
 const CURSOR_BLINK = 8;
 

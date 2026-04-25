@@ -14,6 +14,11 @@ export const CTA: React.FC = () => {
     extrapolateRight: 'clamp',
   });
 
+  const thesisOpacity = interpolate(frame, [42, 62], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
   const ctaProgress = spring({
     frame: frame - 55,
     fps,
@@ -85,6 +90,21 @@ export const CTA: React.FC = () => {
         }}
       >
         The Universal AI Verifier
+      </div>
+
+      {/* Thesis line — closes the loop on Problem */}
+      <div
+        style={{
+          opacity: thesisOpacity,
+          marginTop: 14,
+          fontSize: 15,
+          color: COLORS.textMuted,
+          fontStyle: 'italic',
+          letterSpacing: '0.005em',
+          position: 'relative',
+        }}
+      >
+        From “Deploy and Hope” to “Certify and Ship.”
       </div>
 
       {/* CTA pill */}

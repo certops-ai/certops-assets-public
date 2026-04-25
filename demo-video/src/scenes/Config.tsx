@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame } from 'remotion';
+import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion';
 import { inter } from '../fonts';
 import { COLORS } from '../constants';
 import { SectionLabel } from '../components/SectionLabel';
@@ -31,6 +31,11 @@ export const Config: React.FC = () => {
   const visibleLines = Math.min(YAML_LINES.length, Math.floor(frame / FRAMES_PER_LINE));
   const cursorVisible = visibleLines < YAML_LINES.length && Math.floor(frame / 8) % 2 === 0;
 
+  const taglineOpacity = interpolate(frame, [115, 138], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
   return (
     <AbsoluteFill
       style={{
@@ -43,7 +48,7 @@ export const Config: React.FC = () => {
         padding: '0 80px',
       }}
     >
-      <SectionLabel label="Configuration as Code" />
+      <SectionLabel label="Define your AI as code" />
 
       {/* Terminal window */}
       <div
@@ -112,6 +117,20 @@ export const Config: React.FC = () => {
             <div style={{ color: '#3fb950', height: '1em' }}>▋</div>
           )}
         </div>
+      </div>
+
+      {/* Bottom tagline */}
+      <div
+        style={{
+          marginTop: 20,
+          fontSize: 13,
+          color: COLORS.textMuted,
+          fontWeight: 500,
+          letterSpacing: '0.02em',
+          opacity: taglineOpacity,
+        }}
+      >
+        Manifest = source of truth · versionable · auditable
       </div>
     </AbsoluteFill>
   );

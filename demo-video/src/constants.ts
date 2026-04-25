@@ -14,21 +14,24 @@ export const COLORS = {
 } as const;
 
 export const SCENE_DURATIONS = {
-  problem: 210,    // 7s — extended hold after subtext
-  identity: 150,   // 5s
-  dashboard: 210,  // 7s — NEW
-  wizard: 210,     // 7s — NEW
-  config: 150,     // 5s (shortened)
-  engine: 180,     // 6s — extended hold after DECIDE
-  terminal: 180,   // 6s — NEW
-  metrics: 150,    // 5s (shortened)
-  verdict: 240,    // 8s (extended)
-  cta: 150,        // 5s
+  problem: 210,          // 7s — extended hold after subtext
+  identity: 150,         // 5s
+  dashboard: 210,        // 7s
+  wizard: 210,           // 7s
+  adversarialHero: 150,  // 5s — big-type hero reveal
+  mutationTypes: 210,    // 7s — 12 mutation types typewriter
+  datalab: 210,          // 7s — DataLab: datasets + new job carousel
+  config: 150,           // 5s (shortened)
+  engine: 180,           // 6s — extended hold after DECIDE
+  terminal: 180,         // 6s
+  metrics: 150,          // 5s (shortened)
+  verdict: 240,          // 8s (extended)
+  cta: 150,              // 5s
 } as const;
 
 export const TRANSITION_FRAMES = 15;
 
-// 1710 - 9 * 15 = 1575 frames = 52.5 seconds
+// 2400 - 12 * 15 = 2220 frames = 74 seconds
 export const TOTAL_DURATION =
   Object.values(SCENE_DURATIONS).reduce((a, b) => a + b, 0) -
   (Object.keys(SCENE_DURATIONS).length - 1) * TRANSITION_FRAMES;

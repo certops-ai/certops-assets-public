@@ -55,7 +55,7 @@ export const Engine: React.FC = () => {
         padding: '0 60px',
       }}
     >
-      <SectionLabel label="Attack — Check — Decide" />
+      <SectionLabel label="Attack — Grade — Decide" />
 
       {/* Pipeline */}
       <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>

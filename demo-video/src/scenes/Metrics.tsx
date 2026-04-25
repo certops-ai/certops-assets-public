@@ -150,6 +150,11 @@ export const Metrics: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
+  const taglineOpacity = interpolate(frame, [115, 140], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
   return (
     <AbsoluteFill
       style={{
@@ -162,7 +167,7 @@ export const Metrics: React.FC = () => {
         padding: '0 60px',
       }}
     >
-      <SectionLabel label="Evaluation Results — retriever-service" />
+      <SectionLabel label="Multi-tier scoring" />
 
       {/* 2×2 grid */}
       <div
@@ -182,6 +187,20 @@ export const Metrics: React.FC = () => {
             fps={fps}
           />
         ))}
+      </div>
+
+      {/* Bottom tagline — 3 evaluation tiers */}
+      <div
+        style={{
+          marginTop: 22,
+          fontSize: 13,
+          color: COLORS.textMuted,
+          fontWeight: 500,
+          letterSpacing: '0.02em',
+          opacity: taglineOpacity,
+        }}
+      >
+        Deterministic gates · LLM judges · Regression checks
       </div>
     </AbsoluteFill>
   );

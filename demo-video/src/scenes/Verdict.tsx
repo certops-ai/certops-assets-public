@@ -47,18 +47,24 @@ export const Verdict: React.FC = () => {
   const stampOvershoot = Math.max(0, stampProgress - 1);
   const certGlow = certOpacity * (certFlash * 0.5 + 0.2 + 0.2 * breathe + stampOvershoot * 0.4);
 
-  // Details row
-  const detailsOpacity = interpolate(frame, [130, 150], [0, 1], {
+  // Subtitle below stamp+cert row
+  const subtitleOpacity = interpolate(frame, [115, 138], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
-  const detailsY = interpolate(frame, [130, 150], [12, 0], {
+
+  // Details row
+  const detailsOpacity = interpolate(frame, [148, 168], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  const detailsY = interpolate(frame, [148, 168], [12, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
   // Trust badge
-  const badgeOpacity = interpolate(frame, [165, 185], [0, 1], {
+  const badgeOpacity = interpolate(frame, [180, 200], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -147,12 +153,27 @@ export const Verdict: React.FC = () => {
         </div>
       </div>
 
+      {/* Subtitle — Certificate of Conformity */}
+      <div
+        style={{
+          opacity: subtitleOpacity,
+          marginTop: 28,
+          fontSize: 17,
+          fontWeight: 500,
+          color: COLORS.textPrimary,
+          letterSpacing: '-0.005em',
+        }}
+      >
+        Certificate of Conformity{' '}
+        <span style={{ color: COLORS.textMuted }}>· cryptographically signed</span>
+      </div>
+
       {/* Details row */}
       <div
         style={{
           opacity: detailsOpacity,
           transform: `translateY(${detailsY}px)`,
-          marginTop: 32,
+          marginTop: 14,
           display: 'flex',
           gap: 28,
           fontSize: 14,

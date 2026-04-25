@@ -8,6 +8,9 @@ import { Problem } from './scenes/Problem';
 import { Identity } from './scenes/Identity';
 import { Dashboard } from './scenes/Dashboard';
 import { WizardShowcase } from './scenes/WizardShowcase';
+import { DataLab } from './scenes/DataLab';
+import { AdversarialHero } from './scenes/AdversarialHero';
+import { MutationTypes } from './scenes/MutationTypes';
 import { Config } from './scenes/Config';
 import { Engine } from './scenes/Engine';
 import { TerminalScene } from './scenes/TerminalScene';
@@ -63,13 +66,28 @@ export const CertOpsDemo: React.FC = () => {
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={FADE} />
 
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.wizard}>
-          <WizardShowcase />
+        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.config}>
+          <Config />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={FADE} />
 
-        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.config}>
-          <Config />
+        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.adversarialHero}>
+          <AdversarialHero />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={FADE} />
+
+        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.mutationTypes}>
+          <MutationTypes />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={FADE} />
+
+        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.datalab}>
+          <DataLab />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={FADE} />
+
+        <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.wizard}>
+          <WizardShowcase />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={FADE} />
 
